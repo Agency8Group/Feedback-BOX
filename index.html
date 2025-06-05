@@ -13,6 +13,23 @@
             rel="stylesheet"
         />
         <style>
+            :root {
+                --primary-color: #2563eb;
+                --primary-light: #e0edff;
+                --bg-light: #f3f4f6;
+                --text-dark: #1e293b;
+                --text-subtle: #64748b;
+            }
+
+            body {
+                background-color: var(--bg-light);
+                color: var(--text-dark);
+            }
+
+            .fade-in {
+                animation: fadeIn 0.5s ease-out;
+            }
+
             @keyframes fadeIn {
                 from {
                     opacity: 0;
@@ -23,13 +40,7 @@
                     transform: translateY(0);
                 }
             }
-            .fade-in {
-                animation: fadeIn 0.5s ease-out;
-            }
-            .transition-all {
-                transition: all 0.3s ease;
-            }
-            /* 감정 버튼 스타일 개선 */
+
             .emotion-btn {
                 width: 60px;
                 height: 60px;
@@ -37,27 +48,29 @@
                 align-items: center;
                 justify-content: center;
                 border-radius: 50%;
-                background: #f3f4f6;
+                background: #e2e8f0;
                 transition: all 0.3s ease;
                 font-size: 2rem;
                 cursor: pointer;
                 border: 3px solid transparent;
             }
+
             .emotion-btn:hover {
                 transform: scale(1.1);
-                background: #e5e7eb;
+                background: #cbd5e1;
             }
+
             .emotion-btn.selected {
-                border-color: #2563eb;
-                background: #eff6ff;
+                border-color: var(--primary-color);
+                background: var(--primary-light);
                 transform: scale(1.1);
                 box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
             }
-            /* 로딩 스피너 */
+
             .loading-spinner {
-                border: 3px solid #f3f4f6;
+                border: 3px solid #e2e8f0;
                 border-radius: 50%;
-                border-top: 3px solid #2563eb;
+                border-top: 3px solid var(--primary-color);
                 width: 24px;
                 height: 24px;
                 animation: spin 1s linear infinite;
@@ -65,6 +78,7 @@
                 vertical-align: middle;
                 margin-right: 8px;
             }
+
             @keyframes spin {
                 0% {
                     transform: rotate(0deg);
@@ -73,7 +87,7 @@
                     transform: rotate(360deg);
                 }
             }
-            /* 모바일 최적화 */
+
             @media (max-width: 640px) {
                 .emotion-btn {
                     width: 50px;
@@ -87,7 +101,7 @@
             }
         </style>
     </head>
-    <body class="bg-gray-50 min-h-screen">
+    <body class="min-h-screen text-gray-800">
         <div class="container mx-auto px-4 py-8 max-w-4xl">
             <!-- 헤더 섹션 -->
             <header class="text-center mb-12 fade-in">
@@ -298,14 +312,6 @@
             <!-- 푸터 -->
             <footer class="mt-16 text-center text-gray-500 text-sm">
                 <p>© 2025 전략기획실</p>
-                <p class="mt-2">
-                    문의:
-                    <a
-                        href="mailto:feedback@company.com"
-                        class="text-blue-600 hover:underline"
-                        >feedback@company.com</a
-                    >
-                </p>
             </footer>
         </div>
 
