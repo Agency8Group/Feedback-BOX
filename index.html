@@ -289,18 +289,30 @@
                         q7: formData.get("q7"),
                     };
 
+                    // 상세 디버깅 로그
+                    console.group("폼 데이터 전송 디버깅");
+                    console.log("FormData 원본:");
+                    for (let [key, value] of formData.entries()) {
+                        console.log(`${key}: ${value}`);
+                    }
+                    console.log("변환된 Payload:", payload);
+                    console.log("JSON 문자열:", JSON.stringify(payload));
+                    console.groupEnd();
+
                     try {
-                        await fetch(
-                            "https://script.google.com/macros/s/AKfycbxpriLGLKMJRqlHXBZcb14hTJJnQ2joc3ukRx-MocQhrJyV1iyQHhZGWz9dX7ibXxPuTQ/exec",
+                        const response = await fetch(
+                            "https://script.google.com/macros/s/AKfycbx7qJqUXHWDlrAv3Yr2TYAsg8mlhwQqg82JJAY-Kos_0PmhX4W9a1ocETsn7PeTzKJINg/exec",
                             {
                                 method: "POST",
                                 mode: "no-cors",
                                 headers: {
-                                    "Content-Type": "application/json",
+                                    "Content-Type": "text/plain",
                                 },
                                 body: JSON.stringify(payload),
                             }
                         );
+
+                        console.log("전송 완료:", response);
 
                         document.getElementById("feedback-form").reset();
                         document
